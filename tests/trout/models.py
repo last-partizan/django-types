@@ -65,6 +65,9 @@ class Comment(models.Model):
     post_fk_nullable = models.ForeignKey(
         Post, null=True, on_delete=models.CASCADE, help_text="Comment for a post."
     )
+    post_fk_nullable_typed = models.ForeignKey["Post"](
+        Post, null=True, on_delete=models.CASCADE, help_text="Comment for a post."
+    )
 
     post_one_to_one = models.OneToOneField(Post, on_delete=models.CASCADE)
     post_one_to_one_nullable = models.OneToOneField(
@@ -299,6 +302,10 @@ def main() -> None:
         print(comment.post_fk_nullable)
     if comment.post_fk_nullable is not None:
         print(comment.post_fk_nullable)
+    if isinstance(comment.post_fk_nullable_typed, type(None)):
+        print(comment.post_fk_nullable_typed)
+    if comment.post_fk_nullable_typed is not None:
+        print(comment.post_fk_nullable_typed)
     if not isinstance(comment.post_fk, Post):
         print()  # type: ignore [unreachable]
     if not comment.post_fk and not isinstance(comment.post_fk, Post):
