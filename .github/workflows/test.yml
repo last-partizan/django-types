@@ -30,3 +30,9 @@ jobs:
       - name: Run linters
         run: |
           ./s/lint
+      - name: Validate stubs
+        env:
+          DJANGO_SETTINGS_MODULE: bear.settings
+        run: |
+          export PYTHONPATH="$(pwd)/tests/bear"
+          poetry run stubtest django
