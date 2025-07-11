@@ -1,6 +1,6 @@
 from collections.abc import Callable, Iterable, Sequence
-from typing import Any, Generic, Protocol, TypeVar, overload
-from typing_extensions import Literal, Self
+from typing import Any, Generic, Literal, Protocol, TypeVar, overload
+from typing_extensions import Self
 from uuid import UUID
 
 from django.db import models
@@ -110,7 +110,7 @@ class ForeignObject(Generic[_M], RelatedField[_M, _M]):
         blank: bool = ...,
         null: Literal[False] = False,
         db_index: bool = ...,
-        default: _M | Callable[[], _M] | None = ...,
+        default: _M | Callable[[], _M] = ...,
         editable: bool = ...,
         auto_created: bool = ...,
         serialize: bool = ...,
@@ -147,7 +147,7 @@ class ForeignObject(Generic[_M], RelatedField[_M, _M]):
         blank: bool = ...,
         null: Literal[True],
         db_index: bool = ...,
-        default: _M | Callable[[], _M] = ...,
+        default: _M | Callable[[], _M | None] | None = ...,
         editable: bool = ...,
         auto_created: bool = ...,
         serialize: bool = ...,
@@ -189,7 +189,7 @@ class ForeignKey(Generic[_M], ForeignObject[_M]):
         blank: bool = ...,
         null: Literal[False] = False,
         db_index: bool = ...,
-        default: _M | Callable[[], _M] | None = ...,
+        default: _M | Callable[[], _M] = ...,
         editable: bool = ...,
         auto_created: bool = ...,
         serialize: bool = ...,
@@ -224,7 +224,7 @@ class ForeignKey(Generic[_M], ForeignObject[_M]):
         blank: bool = ...,
         null: Literal[True],
         db_index: bool = ...,
-        default: _M | Callable[[], _M] = ...,
+        default: _M | Callable[[], _M | None] | None = ...,
         editable: bool = ...,
         auto_created: bool = ...,
         serialize: bool = ...,
@@ -275,7 +275,7 @@ class OneToOneField(Generic[_M], ForeignKey[_M]):
         blank: bool = ...,
         null: Literal[False] = False,
         db_index: bool = ...,
-        default: _M | Callable[[], _M] | None = ...,
+        default: _M | Callable[[], _M] = ...,
         editable: bool = ...,
         auto_created: bool = ...,
         serialize: bool = ...,
@@ -310,7 +310,7 @@ class OneToOneField(Generic[_M], ForeignKey[_M]):
         blank: bool = ...,
         null: Literal[True],
         db_index: bool = ...,
-        default: _M | Callable[[], _M] = ...,
+        default: _M | Callable[[], _M | None] | None = ...,
         editable: bool = ...,
         auto_created: bool = ...,
         serialize: bool = ...,

@@ -1,6 +1,5 @@
 from collections.abc import Callable, Iterable
-from typing import Any, Generic, TypeVar, overload
-from typing_extensions import Literal
+from typing import Any, Generic, Literal, TypeVar, overload
 
 from django.db.models.expressions import Combinable
 from django.db.models.fields import Field, _ErrorMessagesToOverride, _ValidatorCallable
@@ -30,7 +29,7 @@ class ArrayField(CheckFieldDefaultMixin, Generic[_V], Field[_V | Combinable, _V]
         blank: bool = ...,
         null: Literal[False] = False,
         db_index: bool = ...,
-        default: list[_V] | Callable[[], list[_V]] | None = ...,
+        default: list[_V] | Callable[[], list[_V]] = ...,
         editable: bool = ...,
         auto_created: bool = ...,
         serialize: bool = ...,
