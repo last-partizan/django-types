@@ -6,7 +6,7 @@ readme = "README.md"
 authors = [{ name = "django-types team & contributors" }]
 license = "MIT"
 keywords = ["django", "types", "mypy", "stubs"]
-requires-python = ">=3.10"
+requires-python = ">=3.9"
 dependencies = ["types-psycopg2>=2.9.21.13"]
 
 [project.urls]
@@ -31,7 +31,7 @@ dev = [
 
 [tool.ruff]
 line-length = 88
-target-version = "py310"
+target-version = "py39"
 exclude = ["*.py"] # only autofix stubs
 
 [tool.ruff.lint]

@@ -1,6 +1,7 @@
 import enum
 from collections.abc import Sequence
-from typing import Any, TypeAlias, TypeVar
+from typing import Any, TypeVar
+from typing_extensions import TypeAlias
 
 _EnumMemberT = TypeVar("_EnumMemberT")
 
